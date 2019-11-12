@@ -25,34 +25,25 @@ for _ in range(int(input())):
     resultss = []
     while diff > 0 and len(resultss) < 2*len(s):
         for i in range(len(s)):
-            # print('i', i)
             if s[i] != t[i]:
                 swapped = False
                 for j in range(i+1, len(s)):
-                    # print('j', j)
                     if s[j] != t[j] and s[i] == s[j] and t[i] == t[j]:
-                        tmp = s[i]
-                        s = s[:i] + t[j] + s[i+1:]
-                        t = t[:j] + tmp + t[j+1:]
+                        s, t = s[:i] + t[j] + s[i+1:], t[:j] + s[i] + t[j+1:]
                         diff -= 2
                         swapped = True
                         resultss.append((i+1, j+1))
                         break
                 if swapped == False:
                     for j in range(i+1, len(s)):
-                        # print('j', j)
                         if s[j] != t[j] and (s[i] == s[j] or t[i] == t[j]):
-                            tmp = s[i]
-                            s = s[:i] + t[j] + s[i+1:]
-                            t = t[:j] + tmp + t[j+1:]
+                            s, t = s[:i] + t[j] + s[i+1:], t[:j] + s[i] + t[j+1:]
                             diff -= 1
                             swapped = True
                             resultss.append((i+1, j+1))
                             break
                 if swapped == False:
-                    tmp = s[i]
-                    s = s[:i] + t[i] + s[i+1:]
-                    t = t[:i] + tmp + t[i+1:]
+                    s, t= s[:i] + t[i] + s[i+1:], t[:i] + s[i] + t[i+1:]
                     resultss.append((i+1, i+1))
                     break
     if diff > 0:
