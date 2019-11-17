@@ -1,4 +1,6 @@
 # GOT TLE, but AC with C++
+# https://codeforces.com/contest/1253/submission/65244253
+# https://codeforces.com/contest/1253/submission/65244525
 
 def getInput(fromFile=False):
     if fromFile:
