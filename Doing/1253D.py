@@ -1,3 +1,5 @@
+# GOT TLE, but AC with C++
+
 def getInput(fromFile=False):
     if fromFile:
         f = open('input', 'r')
