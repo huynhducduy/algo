@@ -1,33 +1,30 @@
-# f = open('input', 'r')
+f = open('input', 'r')
 
 def main():
     result = []
 
-    # f.readline()
-    input()
-    # e = list(map(int, f.readline().split(' ')))
-    e  = list(map(int, input().split(' ')))
+    f.readline()
+    # input()
+    e = list(map(int, f.readline().split(' ')))
+    # e  = list(map(int, input().split(' ')))
 
     d = [0] * len(e)
     d[0] = e[0]
 
     for i in range(1, len(e)):
         d[i] = d[i-1]+e[i]
+        if d[i] <0:
+            return -1
         if d[i] == 0:
             result.append(i)
 
     if d[-1] != 0:
         return -1
 
-    for i in d:
-        if i < 0:
-            return -1
-
-
-    if len(result) > 1:
-        result = [result[0]+1] + [result[i]-result[i-1] for i in range(1,len(result))]
-    elif len(result) > 0:
+    if len(result) > 0:
         result = [result[0]+1]
+        if len(result) > 1:
+            result += [result[i]-result[i-1] for i in range(1,len(result))]
     else:
         return -1
 
